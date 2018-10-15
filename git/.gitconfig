@@ -1,0 +1,99 @@
+[user]
+	email = gv@vuble.tv
+	name = Geoffray
+
+[alias]
+# Statuses
+d = difftool
+s = status -s
+st = status
+stq = status -uno
+# show branches with commit message
+sb = show-branch
+# Checkout
+co = checkout
+# Commit
+ci = commit
+# Log history (requires git 1.8.3 for "%C(auto)" ) : display short sha1, refs (branches,tags), log msg, relative datetime and author
+# %C(auto): to use colors defined in [color] section
+# %h : abbreviated sha1
+# %Creset : to reset color
+# %d : --decorate (branch & tag names)
+# %s : commit message
+# %ad : author date (will follow --date directive) (and not commiter date)
+# %an : author name (can be %cn for commiter name)
+
+lg = log --graph --date-order \
+--pretty=format:'%C(auto)%h%Creset %C(auto)%d%Creset %s %C(green)(%aD) %C(bold cyan)<%an>%Creset'
+lgb = log --graph --date-order --branches \
+--pretty=format:'%C(auto)%h%Creset %C(auto)%d%Creset %s %C(green)(%aD) %C(bold cyan)<%an>%Creset'
+lga = log --graph --date-order --all \
+--pretty=format:'%C(auto)%h%Creset %C(auto)%d%Creset %s %C(green)(%aD) %C(bold cyan)<%an>%Creset'
+
+lf = log --stat \
+--pretty=format:'%C(auto)%h%Creset %C(auto)%d%Creset %s %C(green)(%aD) %C(bold cyan)<%an>%Creset'
+
+h = log --graph --decorate --abbrev-commit --pretty=oneline
+ha = log --graph --decorate --all --abbrev-commit --pretty=oneline
+h2 = log --graph --decorate --pretty=format:'%h | %an (%ad) - %s' --date=local --abbrev-commit
+h2a = log --graph --decorate --all --pretty=format:'%h | %an (%ad) - %s' --date=local --abbrev-commit
+
+# you can copy or link to /usr/local/bin/git-diff-prev f
+diffprev = !$HOME/.dotfiles/bin/git-diff-prev
+# alias gitasenar="git -c user.email=github@marinetti.fr -c user.name='Michael Marinetti'"
+
+[log]
+abbrevCommit = true
+date = relative
+decorate = short
+graph = true
+
+[color]
+ui = true
+filemode = false
+diff = auto
+status = auto
+branch = auto
+pager = true
+
+# [color "branch"]
+# current = bold cyan reverse
+# HEAD = bold cyan reverse
+# local = bold green
+# remote = bold red
+# upstream = yellow
+# plain = reverse yellow
+#
+# [color "decorate"]
+# current = bold cyan reverse
+# branch = bold green
+# remoteBranch = bold red
+# tag = bold yellow reverse
+# stash = blue
+# HEAD = bold cyan reverse
+
+[format]
+# pretty = oneline
+
+[core]
+editor = vim
+	autocrlf = false
+
+[diff]
+tool = vimdiff
+# Git diff will use (i)ndex, (w)ork tree, (c)ommit and (o)bject
+# https://github.com/ornicar/dotfiles/blob/master/gitconfig
+# see git help config
+mnemonicprefix = true
+
+[difftool]
+prompt = false
+
+[merge]
+tool = vimdiff
+
+[push]
+default = upstream
+
+# [instaweb]
+# httpd = apache2
